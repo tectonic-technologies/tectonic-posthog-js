@@ -103,7 +103,7 @@ type OnlyValidKeys<T, Shape> = T extends Shape ? (Exclude<keyof T, keyof Shape> 
 const instances: Record<string, PostHog> = {}
 
 // some globals for comparisons
-const __NOOP = () => { }
+const __NOOP = () => {}
 
 const PRIMARY_INSTANCE_NAME = 'posthog'
 
@@ -353,8 +353,8 @@ export class PostHog {
             const namedPosthog = instances[name] ?? new PostHog()
             namedPosthog._init(token, config, name)
             instances[name] = namedPosthog
-                // Add as a property to the primary instance (this isn't type-safe but its how it was always done)
-                ; (instances[PRIMARY_INSTANCE_NAME] as any)[name] = namedPosthog
+            // Add as a property to the primary instance (this isn't type-safe but its how it was always done)
+            ;(instances[PRIMARY_INSTANCE_NAME] as any)[name] = namedPosthog
 
             return namedPosthog
         }
@@ -530,8 +530,8 @@ export class PostHog {
             this.compression = includes(response['supportedCompression'], Compression.GZipJS)
                 ? Compression.GZipJS
                 : includes(response['supportedCompression'], Compression.Base64)
-                    ? Compression.Base64
-                    : undefined
+                ? Compression.Base64
+                : undefined
         }
 
         if (response.analytics?.endpoint) {
@@ -690,7 +690,7 @@ export class PostHog {
                 if (isArray(fn_name)) {
                     capturing_calls.push(item) // chained call e.g. posthog.get_group().set()
                 } else if (isFunction(item)) {
-                    ; (item as any).call(this)
+                    ;(item as any).call(this)
                 } else if (isArray(item) && fn_name === 'alias') {
                     alias_calls.push(item)
                 } else if (isArray(item) && fn_name.indexOf('capture') !== -1 && isFunction((this as any)[fn_name])) {
@@ -966,9 +966,9 @@ export class PostHog {
         } else {
             logger.error(
                 'Invalid value for property_denylist config: ' +
-                this.config.property_denylist +
-                ' or property_blacklist config: ' +
-                this.config.property_blacklist
+                    this.config.property_denylist +
+                    ' or property_blacklist config: ' +
+                    this.config.property_blacklist
             )
         }
 
@@ -1202,7 +1202,7 @@ export class PostHog {
      * @returns {Function} A function that can be called to unsubscribe the listener. E.g. Used by useEffect when the component unmounts.
      */
     onSessionId(callback: SessionIdChangedCallback): () => void {
-        return this.sessionManager?.onSessionId(callback) ?? (() => { })
+        return this.sessionManager?.onSessionId(callback) ?? (() => {})
     }
 
     /** Get list of all surveys. */
@@ -1825,11 +1825,11 @@ export class PostHog {
         const properties: Properties = isFunction(assignableWindow.parseErrorAsProperties)
             ? assignableWindow.parseErrorAsProperties([error.message, undefined, undefined, undefined, error])
             : {
-                $exception_type: error.name,
-                $exception_message: error.message,
-                $exception_level: 'error',
-                ...additionalProperties,
-            }
+                  $exception_type: error.name,
+                  $exception_message: error.message,
+                  $exception_level: 'error',
+                  ...additionalProperties,
+              }
 
         this.exceptions.sendExceptionEvent(properties)
     }
@@ -1865,7 +1865,6 @@ export class PostHog {
         return this.persistence?.props[property_name]
     }
 
-
     /**
      * Returns the value of the all the super properties
      *
@@ -1876,7 +1875,6 @@ export class PostHog {
     get_properties(): Properties | undefined {
         return this.persistence?.props
     }
-
 
     /**
      * Returns the value of the session super property named property_name. If no such
@@ -2121,7 +2119,7 @@ const add_dom_loaded_handler = function () {
         if ((dom_loaded_handler as any).done) {
             return
         }
-        ; (dom_loaded_handler as any).done = true
+        ;(dom_loaded_handler as any).done = true
 
         ENQUEUE_REQUESTS = false
 
