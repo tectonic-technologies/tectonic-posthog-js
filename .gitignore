@@ -16,14 +16,11 @@ node_modules
 .mypy_cache
 package-lock.json
 .idea
-dist/*
-lib/
 static/*
 .yalc
 yalc*
 cypress/videos
 coverage
-react/dist
 test-result.json
 yarn-error.log
 stats.html

@@ -59,6 +59,7 @@ module.exports = {
             },
         },
     },
+    ignorePatterns: ['dist/', 'react/dist/', 'lib/'],
     overrides: [
         {
             files: 'src/**/*',
