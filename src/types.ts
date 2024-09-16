@@ -558,7 +558,7 @@ export type ErrorEventArgs = [
 // and to avoid relying on a frequently changing @sentry/types dependency
 // but provided as an array of literal types, so we can constrain the level below
 export const severityLevels = ['fatal', 'error', 'warning', 'log', 'info', 'debug'] as const
-export declare type SeverityLevel = typeof severityLevels[number]
+export declare type SeverityLevel = (typeof severityLevels)[number]
 
 export interface ErrorProperties {
     $exception_type: string

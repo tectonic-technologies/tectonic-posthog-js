@@ -1870,6 +1870,7 @@ export class PostHog {
      *
      * ### Notes:
      *
+     *
      * get_properties() can only be called after the PostHog library has finished loading.
      */
     get_properties(): Properties | undefined {

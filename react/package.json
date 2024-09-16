@@ -48,7 +48,6 @@
         "cross-env": "^7.0.3",
         "given2": "^2.1.7",
         "jest": "^26.6.3",
-        "posthog-js": "link:..",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-test-renderer": "^17.0.1",
