@@ -8184,8 +8184,9 @@ var Wr = (function () {
                                           { $set: t || {}, $set_once: n || {} }
                                       ),
                                       this.featureFlags.setAnonymousDistinctId(i))
-                                    : (t || n) && this.setPersonProperties(t, n),
-                                    e !== i && (this.reloadFeatureFlags(), this.unregister($e))
+                                    : (t || n) && this.setPersonProperties(t, n)
+                                var o = this.config.advanced_disable_decide
+                                e === i || o || (this.reloadFeatureFlags(), this.unregister($e))
                             }
                         } else W.error('Unique user id has not been set in posthog.identify')
                     },

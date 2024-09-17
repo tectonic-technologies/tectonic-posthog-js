@@ -1356,9 +1356,10 @@ export class PostHog {
             this.setPersonProperties(userPropertiesToSet, userPropertiesToSetOnce)
         }
 
+        const disableDecide = this.config.advanced_disable_decide
         // Reload active feature flags if the user identity changes.
         // Note we don't reload this on property changes as these get processed async
-        if (new_distinct_id !== previous_distinct_id) {
+        if (new_distinct_id !== previous_distinct_id && !disableDecide) {
             this.reloadFeatureFlags()
             // also clear any stored flag calls
             this.unregister(FLAG_CALL_REPORTED)

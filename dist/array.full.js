@@ -17248,8 +17248,9 @@
                                               { $set: t || {}, $set_once: n || {} }
                                           ),
                                           this.featureFlags.setAnonymousDistinctId(r))
-                                        : (t || n) && this.setPersonProperties(t, n),
-                                        e !== r && (this.reloadFeatureFlags(), this.unregister(Ks))
+                                        : (t || n) && this.setPersonProperties(t, n)
+                                    var a = this.config.advanced_disable_decide
+                                    e === r || a || (this.reloadFeatureFlags(), this.unregister(Ks))
                                 }
                             } else vn.error('Unique user id has not been set in posthog.identify')
                         },
