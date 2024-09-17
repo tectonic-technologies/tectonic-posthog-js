@@ -16577,7 +16577,7 @@
                                 this.set_config(bn({}, Rd(), Fd(o), { name: a, token: e })),
                                 this.config.on_xhr_error &&
                                     vn.error('[posthog] on_xhr_error is deprecated. Use on_request_error instead'),
-                                (this.compression = o.disable_compression ? void 0 : la.GZipJS),
+                                (this.compression = o.disable_compression ? void 0 : la.Base64),
                                 (this.persistence = new Fl(this.config)),
                                 (this.sessionPersistence =
                                     'sessionStorage' === this.config.persistence
@@ -16969,7 +16969,7 @@
                                                                   this.analyticsDefaultEndpoint
                                                               ),
                                                     data: u,
-                                                    compression: 'best-available',
+                                                    compression: la.Base64,
                                                     batchKey: null == r ? void 0 : r._batchKey,
                                                 }
                                                 return (

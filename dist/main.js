@@ -7534,7 +7534,7 @@ var jr = (function () {
                             this.set_config(J({}, is(), rs(s), { name: o, token: e })),
                             this.config.on_xhr_error &&
                                 W.error('[posthog] on_xhr_error is deprecated. Use on_request_error instead'),
-                            (this.compression = s.disable_compression ? void 0 : exports.Compression.GZipJS),
+                            (this.compression = s.disable_compression ? void 0 : exports.Compression.Base64),
                             (this.persistence = new bn(this.config)),
                             (this.sessionPersistence =
                                 'sessionStorage' === this.config.persistence
@@ -7918,7 +7918,7 @@ var jr = (function () {
                                                               this.analyticsDefaultEndpoint
                                                           ),
                                                 data: u,
-                                                compression: 'best-available',
+                                                compression: exports.Compression.Base64,
                                                 batchKey: null == i ? void 0 : i._batchKey,
                                             }
                                             return (
