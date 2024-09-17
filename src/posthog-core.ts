@@ -401,7 +401,7 @@ export class PostHog {
             logger.error('[posthog] on_xhr_error is deprecated. Use on_request_error instead')
         }
 
-        this.compression = config.disable_compression ? undefined : Compression.GZipJS
+        this.compression = config.disable_compression ? undefined : Compression.Base64
 
         this.persistence = new PostHogPersistence(this.config)
         this.sessionPersistence =
@@ -856,7 +856,7 @@ export class PostHog {
             method: 'POST',
             url: options?._url ?? this.requestRouter.endpointFor('api', this.analyticsDefaultEndpoint),
             data,
-            compression: 'best-available',
+            compression: Compression.Base64, //'best-available',
             batchKey: options?._batchKey,
         }
 
